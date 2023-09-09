@@ -1,8 +1,13 @@
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
 
 int main(void) {
+	p2();
+}
+
+int p2(void) {
 	float x;
 	float y;
 	float z;
@@ -12,7 +17,7 @@ int main(void) {
 	if (disc < 0)
 	{
 		printf("This equation has no solutions");
-	}	
+	}
 	else if (disc == 0) {
 		float solution = -y / (2 * x);
 		printf("There is one solution: %f", solution);
