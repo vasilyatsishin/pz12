@@ -27,6 +27,5 @@ int p2(void) {
 		float solution2 = (-y - sqrt(disc)) / (2 * x);
 		printf("There are two solutions: %f, %f", solution1, solution2);
 	}
-
 	return 0;
 }
