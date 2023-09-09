@@ -1,10 +1,21 @@
-
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
 
 int main(void) {
 	p2();
+	return 0;
+}
+
+int p1(void) {
+	float x;
+	printf("Type your number:");
+	scanf("%f", &x);
+	float xInPow = pow(x, 2);
+	float thirdFloor = 5 - (pow(x, 2) / 7);
+	float Ti = x / (1 - xInPow / (3 - xInPow / (thirdFloor)));
+	printf("%f", Ti);
+	return 0;
 }
 
 int p2(void) {
@@ -12,7 +23,7 @@ int p2(void) {
 	float y;
 	float z;
 	printf("Type your ints:");
-	scanf("%f %f %f", &x, &y, &z);
+	scanf("%f, %f, %f", &x, &y, &z);
 	float disc = pow(y, 2) - (4 * x * z);
 	if (disc < 0)
 	{
