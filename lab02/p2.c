@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-/*
-// Функція для обчислення ln(x+1) за допомогою ряду Тейлора
+/*// Функція для обчислення ln(x+1) за допомогою ряду Тейлора
 double taylorSeries(double x, int n) {
     double result = 0.0;
     for (int i = 1; i <= n; i++) {
