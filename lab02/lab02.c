@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <math.h>
 
 int main(void) {
     p2();
@@ -31,34 +32,37 @@ int p2(){
     counts();
 }
 
-double taylorSeries(double x, int n) {
-    double result = 0.0;
+double taylor_series_ln(double x, int n) {
+    double result = 0;
+    int sign = 1;
+
     for (int i = 1; i <= n; i++) {
-        if (i % 2 == 0) {
-            result -= pow(x, i) / i;
-        }
-        else {
-            result += pow(x, i) / i;
-        }
+        result += sign * pow(x, i) / i;
+        sign = -sign;
     }
+
     return result;
 }
 
 int counts() {
-    double A = -0.999999999;  // Початок відрізку
-    double B = 1.0;  // Кінець відрізку
-    int numPoints = 10; // Кількість точок для табуляції
-    int n = 5; // Рівень розкладу у ряд Тейлора
+    double A = -1.0, B = 1.0, step;
+    int n;
 
-    printf("x\t\tTaylor\t\tExact\n");
 
-    // Протабулюємо функцію та порівняємо з точним значенням
-    for (int i = 0; i <= numPoints; i++) {
-        double x = A + (B - A) * i / numPoints;
-        double taylorValue = taylorSeries(x, n);
-        double exactValue = log(x + 1); // Значення функції, обчислене формулою
+    printf("Step: ");
+    scanf("%lf", &step);
 
-        printf("%f\t%f\t%f\n", x, taylorValue, exactValue);
+    printf("Count of n: ");
+    scanf("%d", &n);
+
+    printf("\n x\t\tResult yt\t\tResult y\tDelta\t\t\tIterations\n");
+    int iterations = 0;
+    for (double x = A; x <= B; x += step) {
+        double taylor_result = taylor_series_ln(x, n);
+        double formula_result = log(1 + x);
+        double delta = fabs(taylor_result - formula_result);
+        iterations++;
+        printf("%.4lf\t\t%.6lf\t\t%.6lf\t%.6lf\t\t\t%d\n", x, taylor_result, formula_result, delta, iterations);
     }
 
     return 0;
